@@ -1,3 +1,10 @@
+import { NavComponent } from './templates/nav/nav.component';
+import { FooterComponent } from './templates/footer/footer.component';
+import { HeaderComponent } from './templates/header/header.component';
+import { MessagingModule } from './messaging/messaging.module';
+import { ContentComponent } from './templates/content/content.component';
+import { PagesModule } from './pages/pages.module';
+import { TemplatesModule } from './templates/templates.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -6,13 +13,16 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TemplatesModule,
+    PagesModule,
+    MessagingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ContentComponent, HeaderComponent,FooterComponent,NavComponent]
 })
 export class AppModule { }
