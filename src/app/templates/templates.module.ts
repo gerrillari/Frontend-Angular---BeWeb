@@ -1,3 +1,5 @@
+import { MessagingModule } from './../messaging/messaging.module';
+import { InboxComponent } from './../messaging/inbox/inbox.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
@@ -12,12 +14,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderComponent,
     FooterComponent,
     NavComponent,
-    ContentComponent
+    ContentComponent,
+
   ],
   imports: [
     CommonModule,
     SlideMenuModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MessagingModule
   ]
 })
 export class TemplatesModule { }

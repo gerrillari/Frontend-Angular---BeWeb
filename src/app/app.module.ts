@@ -1,3 +1,4 @@
+import { InboxComponent } from './messaging/inbox/inbox.component';
 import { NavComponent } from './templates/nav/nav.component';
 import { FooterComponent } from './templates/footer/footer.component';
 import { HeaderComponent } from './templates/header/header.component';
