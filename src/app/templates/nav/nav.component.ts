@@ -1,3 +1,4 @@
+import { Navigation } from './models/navigation';
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
@@ -8,21 +9,37 @@ import { MenuItem } from 'primeng/api';
 })
 export class NavComponent implements OnInit {
 
-  items: MenuItem[] = [];
+  //items: MenuItem[] = [];
+  menus: Navigation[]=[];
 
   constructor() {
 
    }
 
   ngOnInit(): void {
-    this.items = [
+    this.menus=[
       {
-        label:'joli'
+        label: "Menu 1"
       },
       {
-        label:'menu2'
+        label: "Menu 2"
+      },
+      {
+        label: "Menu 3"
       }
-    ];
+    ]
+    /*this.items = [
+      {
+        label:'Messages reçus'
+      },
+      {
+        label:'Messages envoyés'
+      },
+      {
+        label:'Messages supprimés'
+      }
+    ];*/
+
   }
 
 }
