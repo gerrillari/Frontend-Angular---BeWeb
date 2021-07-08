@@ -1,3 +1,4 @@
+import { MessagesService } from './../services/messages.service';
 import { splitClasses } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { Message } from '../models/message';
@@ -13,11 +14,14 @@ export class InboxComponent implements OnInit {
 
   @Input() count: number = 0 //propriété qui va dire le nb de messages à afficher
 
-  constructor() { }
+  constructor(
+    private messagesService: MessagesService,
+
+    ) { }
 
   ngOnInit(): void {
     //gestion du nb de messages
-    this.messages = this.messages.splice(0,this.count);
+    this.messages = this.messagesService.getAll();//.splice(0,this.count);
   //   this.messages= [
   //   {
   //     id: 1,

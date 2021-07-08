@@ -1,3 +1,4 @@
+import { MessagesService } from './../services/messages.service';
 import { Component, OnInit } from '@angular/core';
 import { Message } from '../models/message';
 
@@ -20,13 +21,13 @@ export class MessageswritingComponent implements OnInit {
 
   }
 
-  constructor() { }
+  constructor(private service : MessagesService) { }
 
   ngOnInit(): void {
   }
 
   send(){
-    console.log(this.forms)
+    this.service.create(this.forms);
   }
 
   clear(){
