@@ -3,19 +3,24 @@ import { CommonModule } from '@angular/common';
 import { NotificationComponent } from './notification/notification.component';
 import { MessageswritingComponent } from './messageswriting/messageswriting.component';
 import { InboxComponent } from './inbox/inbox.component';
-import { NbCardModule } from '@nebular/theme';
+import { FormsModule } from '@angular/forms';
+import { NbButtonModule } from '@nebular/theme';
+import { NbInputModule } from '@nebular/theme';
 
 
 
 @NgModule({
   declarations: [
-    InboxComponent
+    InboxComponent,
+    MessageswritingComponent
 
   ],
   imports: [
     CommonModule,
-    NbCardModule
+    FormsModule,
+    NbButtonModule,
+    NbInputModule
   ],
-  exports: [InboxComponent]
+  exports: [InboxComponent, MessageswritingComponent]
 })
 export class MessagingModule { }
