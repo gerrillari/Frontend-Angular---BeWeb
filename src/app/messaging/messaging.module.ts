@@ -6,6 +6,7 @@ import { InboxComponent } from './inbox/inbox.component';
 import { FormsModule } from '@angular/forms';
 import { NbButtonModule } from '@nebular/theme';
 import { NbInputModule } from '@nebular/theme';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -19,7 +20,8 @@ import { NbInputModule } from '@nebular/theme';
     CommonModule,
     FormsModule,
     NbButtonModule,
-    NbInputModule
+    NbInputModule,
+    HttpClientModule
   ],
   exports: [InboxComponent, MessageswritingComponent]
 })

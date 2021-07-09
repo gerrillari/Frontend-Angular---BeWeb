@@ -21,7 +21,15 @@ export class InboxComponent implements OnInit {
 
   ngOnInit(): void {
     //gestion du nb de messages
-    this.messages = this.messagesService.getAll();//.splice(0,this.count);
+    this.messagesService
+    .getAll()
+    .then(ms=>{ //si la Promise (messages.service.ts) se passe bien, qu'il récupère les messages arrivés, donc il les affiche
+      //console.log(ms)
+      this.messages = ms
+    })
+    .catch(reason => console.log(reason))
+
+    //.splice(0,this.count);
   //   this.messages= [
   //   {
   //     id: 1,
