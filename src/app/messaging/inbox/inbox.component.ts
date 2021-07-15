@@ -22,12 +22,18 @@ export class InboxComponent implements OnInit {
   ngOnInit(): void {
     //gestion du nb de messages
     this.messagesService
+      // .getObservable()
+      // .subscribe(messages=>{
+      //   this.messages = messages
+      // })
     .getAll()
     .then(ms=>{ //si la Promise (messages.service.ts) se passe bien, qu'il récupère les messages arrivés, donc il les affiche
-      //console.log(ms)
-      this.messages = ms
+    //   //console.log(ms)
+    this.messages = ms
     })
-    .catch(reason => console.log(reason))
+   .catch(reason => console.log(reason.message))
+  }
+
 
     //.splice(0,this.count);
   //   this.messages= [
@@ -62,15 +68,12 @@ export class InboxComponent implements OnInit {
   //     read: false
   //   }
   // ]
-
-  }
-
   filter(event: Event){
-    //caste de l'élément afin de pouvoir le manipuler
-    let input = event.target as HTMLInputElement;//transformer en html au lieu d'event target - tipage
-    //renvoie nouvelle liste des messages si la condition est vérifié (dans ce cas s'il a été lu)
-    this.messages = this.messages.filter(message=>message.read === input.checked)
-    console.log(event)
+      //caste de l'élément afin de pouvoir le manipuler
+      let input = event.target as HTMLInputElement;//transformer en html au lieu d'event target - tipage
+      //renvoie nouvelle liste des messages si la condition est vérifié (dans ce cas s'il a été lu)
+      this.messages = this.messages.filter(message=>message.read === input.checked)
+      console.log(event)
+    }
   }
 
-}

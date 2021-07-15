@@ -1,3 +1,6 @@
-<input  [(ngModel)]="forms.to" name="to">
+<input  [(ngModel)]="message.from" name="from">
+<input  [(ngModel)]="message.to" name="to">
+<input  [(ngModel)]="message.subject" name="subject">
+<input  [(ngModel)]="message.body" name="body">
 <button  (click)="clear()">CLEAR</button>
 <button  (click)="send()">SEND</button>

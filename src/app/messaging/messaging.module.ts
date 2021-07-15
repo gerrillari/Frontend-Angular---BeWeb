@@ -13,7 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     InboxComponent,
-    MessageswritingComponent
+    MessageswritingComponent,
+    NotificationComponent
 
   ],
   imports: [
@@ -23,6 +24,6 @@ import { HttpClientModule } from '@angular/common/http';
     NbInputModule,
     HttpClientModule
   ],
-  exports: [InboxComponent, MessageswritingComponent]
+  exports: [InboxComponent, MessageswritingComponent, NotificationComponent]
 })
 export class MessagingModule { }

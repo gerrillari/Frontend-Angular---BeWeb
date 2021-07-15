@@ -9,17 +9,7 @@ import { Message } from '../models/message';
 })
 export class MessageswritingComponent implements OnInit {
 
-  forms: Message={
-    id: 8,
-    from : "toto@toto.com",
-    to: "tata@tata.com",
-    subject: "titre message",
-    body: "tototatatiti",
-    sendDate: new Date('December 17, 1995 03:24:00'),
-    receiveDate: new Date('December 17, 1995 03:24:00'),
-    read: false
-
-  }
+  message: Message={}
 
   constructor(private service : MessagesService) { }
 
@@ -27,11 +17,11 @@ export class MessageswritingComponent implements OnInit {
   }
 
   send(){
-    this.service.create(this.forms);
+    this.service.create(this.message);
   }
 
   clear(){
-    this.forms = {};
+    this.message = {};
   }
 
 }

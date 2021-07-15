@@ -1,11 +1,16 @@
 import { Message } from './../models/message';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MessagesService {
+
+  //private subject : BehaviorSubject<Message[]>
+
 
   private messages: Message[] = [
     {
@@ -40,11 +45,20 @@ export class MessagesService {
     }
   ]
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private router: Router) {
+      //this.getAll()
+        // .then(messages=>{
+        //   this.subject = new BehaviorSubject(messages);
+        // })
+
+     }
+
+
 
   getAll(): Promise<Message[]>{
     //retourne liste de messages
-    return this.http.get<Message[]>("http://localhost:4200/assets/datas.json").toPromise();//comm en bas
+    return this.http.get<Message[]>("http://localhost:9955/messages").toPromise();//comm en bas
   }
 
   /**
@@ -54,7 +68,7 @@ export class MessagesService {
     //récupérer les messages lorsqu'il y en a, et le service il va notifier le component (inbox)
     //le service permets au component d'observer la liste de messages
     return this.http
-    .get<Message[]>("http://localhost/backend")
+    .get<Message[]>("http://localhost:4200/assets/datas.json")
     //get = on emet la requête get, récupérer
     //<Message[]> = type d'objet à observer : une liste de messages sous JSON
     //.toPromise()
@@ -79,8 +93,25 @@ export class MessagesService {
 
   create(message: Message): void{
     //ça rajoute le message créé dans la liste de messages
-    this.messages.push(message);
+    //this.messages.push(message);
+    this.http
+      .post('http://localhost:9955/messages',message)
+      .toPromise()
+      .then(datas=>{
+        //location.href= 'http://localhost:9955/inbox'
+        //this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.navigate(['/messages'])
+      })
+      .catch(reason=>{
 
+      })
+
+  }
+
+
+  getObservable(): Observable<Message[]>{
+    return this.http
+      .get<Message[]>("http://localhost:9955/messages")
   }
 }
 
